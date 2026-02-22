@@ -1,16 +1,16 @@
 package tymoteusz.kunicki.entities.figures;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.FigureDoseNotExist;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 import tymoteusz.kunicki.entities.creator.Creator;
 
 public class SearchLight extends Figure {
 
-    private static final int MAX_TRESURE = 3;
-    private int tresureFound = 0;
+    private static final int MAX_TREASURE = 3;
+    private int treasureFound = 0;
 
-    public SearchLight(Board borad) {
-        super(borad, FigureType.SEARCHLIGHT);
+    public SearchLight(Board board) {
+        super(board, FigureType.SEARCHLIGHT);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class SearchLight extends Figure {
             if (!isRunning) break;
             try {
                 Thread.sleep(1000);
-                searchForTrasure();
+                searchForTreasure();
                 doRandomAction();
 
                 if(destinedToDie) die();
@@ -30,7 +30,6 @@ public class SearchLight extends Figure {
                 break;
             }
         }
-
         die();
     }
 
@@ -42,17 +41,15 @@ public class SearchLight extends Figure {
         }
     }
 
-    private void searchForTrasure() throws FigureDoseNotExist {
+    private void searchForTreasure() throws FigureDoseNotExist {
         if (board.getTresure(this)) {
-            tresureFound++;
+            treasureFound++;
             IO.println("Tresure found (" + board.getCurrentLocation(this) + ")");
         }
-        if (tresureFound >= MAX_TRESURE) becomeAShooter();
-
+        if (treasureFound >= MAX_TREASURE) becomeAShooter();
     }
 
     private void becomeAShooter() {
         Creator.transformSearchLightToShooter(board, this);
     }
-
 }

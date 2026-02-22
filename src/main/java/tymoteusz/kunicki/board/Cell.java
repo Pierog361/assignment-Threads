@@ -1,6 +1,7 @@
 package tymoteusz.kunicki.board;
 
 import tymoteusz.kunicki.entities.figures.Figure;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,17 +9,17 @@ import java.util.Objects;
 
 public class Cell {
     private Figure figure;
-    private boolean hasTresure, hasFigure;
+    private boolean hasTreasure, hasFigure;
 
     public static List<Integer> getFreeCellsIndexList(List<Cell> cells) {
-        List<Integer> freeCellIndexies = new ArrayList<>();
+        List<Integer> freeCellIndexes = new ArrayList<>();
         for (int i = 0; i < cells.size(); i++) {
-            if (!cells.get(i).hasFigure()) freeCellIndexies.add(i);
+            if (!cells.get(i).hasFigure()) freeCellIndexes.add(i);
         }
-        return freeCellIndexies;
+        return freeCellIndexes;
     }
 
-    public static int getIndex(List<Cell> cells, Figure figure) throws FigureDoseNotExist{
+    public static int getIndex(List<Cell> cells, Figure figure) throws FigureDoseNotExist {
 
         for (int i = 0; i < cells.size(); i++) {
             if (!cells.get(i).hasFigure()) continue;
@@ -28,16 +29,16 @@ public class Cell {
     }
 
     // Tresure methods
-    public boolean hasTresure() {
-        return hasTresure;
+    public boolean hasTreasure() {
+        return hasTreasure;
     }
 
-    public void addTresure() {
-        hasTresure = true;
+    public void addTreasure() {
+        hasTreasure = true;
     }
 
-    public void removeTresure() {
-        hasTresure = false;
+    public void removeTreasure() {
+        hasTreasure = false;
     }
 
     // Figure methods
@@ -59,6 +60,4 @@ public class Cell {
         hasFigure = false;
         this.figure = null;
     }
-
-
 }

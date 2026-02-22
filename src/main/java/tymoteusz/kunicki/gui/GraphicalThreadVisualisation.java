@@ -1,4 +1,4 @@
-package tymoteusz.kunicki.userInterface;
+package tymoteusz.kunicki.gui;
 
 import tymoteusz.kunicki.board.Board;
 
@@ -9,7 +9,7 @@ public class GraphicalThreadVisualisation extends JFrame implements Runnable {
     private JTextPane boardTextPanel;
     private JPanel panel1;
 
-    private Board board;
+    private final Board board;
 
     public GraphicalThreadVisualisation(Board board) {
         setSize(400, 400);
@@ -24,7 +24,6 @@ public class GraphicalThreadVisualisation extends JFrame implements Runnable {
 
         this.board = board;
     }
-
 
     @Override
     public void run() {
@@ -53,7 +52,5 @@ public class GraphicalThreadVisualisation extends JFrame implements Runnable {
 
         boardTextPanel.setAlignmentX(JTextPane.CENTER_ALIGNMENT);
         boardTextPanel.setAlignmentY(JTextPane.CENTER_ALIGNMENT);
-
     }
-
 }

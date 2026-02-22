@@ -1,7 +1,7 @@
 package tymoteusz.kunicki.entities.figures;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.CellOcupiedException;
+import tymoteusz.kunicki.exceptions.CellOcupiedException;
 
 import java.util.Random;
 import java.util.UUID;
@@ -10,7 +10,7 @@ public abstract class Figure implements Runnable {
 
     public final static int NRTH = 0, NRTHEAST = 1, EAST = 2, SOTHEAST = 3, SOTH = 4, SOTHWEST = 5, WEST = 6, NRTHWEST = 7;
 
-    public enum FigureType {BULLDOSER, SEARCHLIGHT, SHOOTER, ARROW}
+    public enum FigureType {BULLDOZER, SEARCHLIGHT, SHOOTER, ARROW}
 
     Random random = new Random();
 
@@ -54,7 +54,6 @@ public abstract class Figure implements Runnable {
         hasDied = true;
 
         IO.println(figureType + " has died!");
-
     }
 
     public void goForward(int direction) throws CellOcupiedException {

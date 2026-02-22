@@ -1,16 +1,14 @@
 package tymoteusz.kunicki.entities.figures;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.CellOcupiedException;
-import tymoteusz.kunicki.board.FigureDoseNotExist;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 
 import java.util.List;
-import java.util.Random;
 
 public class Bulldozer extends Figure {
 
     public Bulldozer(Board board) {
-        super(board, FigureType.BULLDOSER);
+        super(board, FigureType.BULLDOZER);
     }
 
     @Override

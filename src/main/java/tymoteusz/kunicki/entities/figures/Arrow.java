@@ -1,8 +1,7 @@
 package tymoteusz.kunicki.entities.figures;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.CellOcupiedException;
-import tymoteusz.kunicki.board.FigureDoseNotExist;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 
 public class Arrow extends Figure {
 
@@ -30,19 +29,18 @@ public class Arrow extends Figure {
                 break;
             }
         }
-
         die();
     }
 
     @Override
     public void goForward(int direction)  {
         if (!board.moveFigure(this, direction)) {
-            handleColision();
+            handleCollision();
             die();
         }
     }
 
-    private void handleColision() {
+    private void handleCollision() {
        board.kill(board.getLoockedAtFigiures(this, direction, 1).getFirst());
     }
 }

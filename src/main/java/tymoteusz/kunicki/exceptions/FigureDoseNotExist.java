@@ -1,4 +1,4 @@
-package tymoteusz.kunicki.board;
+package tymoteusz.kunicki.exceptions;
 
 public class FigureDoseNotExist extends RuntimeException {
     public FigureDoseNotExist(String message) {

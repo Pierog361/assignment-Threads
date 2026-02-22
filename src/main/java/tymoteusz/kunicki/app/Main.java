@@ -1,9 +1,9 @@
-package tymoteusz.kunicki;
+package tymoteusz.kunicki.app;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.FigureDoseNotExist;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 import tymoteusz.kunicki.entities.creator.Creator;
-import tymoteusz.kunicki.userInterface.GraphicalThreadVisualisation;
+import tymoteusz.kunicki.gui.GraphicalThreadVisualisation;
 
 public class Main {
 

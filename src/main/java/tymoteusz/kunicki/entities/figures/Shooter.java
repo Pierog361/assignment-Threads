@@ -1,7 +1,7 @@
 package tymoteusz.kunicki.entities.figures;
 
 import tymoteusz.kunicki.board.Board;
-import tymoteusz.kunicki.board.FigureDoseNotExist;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 import tymoteusz.kunicki.entities.creator.Creator;
 
 public class Shooter extends Figure {

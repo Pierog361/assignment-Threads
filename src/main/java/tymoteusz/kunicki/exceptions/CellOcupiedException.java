@@ -1,4 +1,4 @@
-package tymoteusz.kunicki.board;
+package tymoteusz.kunicki.exceptions;
 
 public class CellOcupiedException extends RuntimeException {
     public CellOcupiedException(String message) {

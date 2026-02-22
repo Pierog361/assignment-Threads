@@ -1,6 +1,7 @@
 package tymoteusz.kunicki.board;
 
 import tymoteusz.kunicki.entities.figures.Figure;
+import tymoteusz.kunicki.exceptions.FigureDoseNotExist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Board {
         for (Cell cell : cells) {
             if (row++ % 10 == 9) boardString.append("\n");
 
-            if (cell.hasTresure()) boardString.append("t");
+            if (cell.hasTreasure()) boardString.append("t");
             else boardString.append(" ");
 
 
@@ -37,7 +38,7 @@ public class Board {
 
             switch (cell.getfigure().getFigureType()) {
                 case SHOOTER -> boardString.append("S ");
-                case BULLDOSER -> boardString.append("B ");
+                case BULLDOZER -> boardString.append("B ");
                 case SEARCHLIGHT -> boardString.append("L ");
                 case ARROW -> boardString.append(". ");
                 default -> boardString.append("0 ");
@@ -57,12 +58,12 @@ public class Board {
     }
 
     public synchronized void addTresure(int location) {
-        cells.get(location).addTresure();
+        cells.get(location).addTreasure();
         amountOfActivTresures++;
     }
 
     public synchronized void removeTresure(int location) {
-        cells.get(location).removeTresure();
+        cells.get(location).removeTreasure();
         amountOfActivFigures--;
     }
 
@@ -147,7 +148,7 @@ public class Board {
 
     public synchronized boolean getTresure(Figure figure) throws FigureDoseNotExist{
         Cell currentCell = cells.get(getCurrentLocation(figure));
-        if (!currentCell.hasTresure()) return false;
+        if (!currentCell.hasTreasure()) return false;
 
         removeTresure(getCurrentLocation(figure));
         return true;

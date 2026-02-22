@@ -11,20 +11,19 @@ public class Creator implements Runnable {
     private final Board board;
     private final Random random = new Random();
 
-    private Boolean isRunning;
-
     public Creator(Board bord) {
         this.board = bord;
     }
 
     @Override
     public void run() {
-        isRunning = true;
+
+        boolean isRunning = true;
 
         while (isRunning) {
 
-            generatAFigure();
-            generateAtresure();
+            generateAFigure();
+            generateTreasure();
 
             try {
                 Thread.sleep(1500);
@@ -34,7 +33,7 @@ public class Creator implements Runnable {
         }
     }
 
-    private void generatAFigure() {
+    private void generateAFigure() {
 
         if (board.getAmountOfActivFigures() >= MAX_FIGURES) return;
 
@@ -53,23 +52,20 @@ public class Creator implements Runnable {
         IO.println(newFigure.getFigureType() + " was born! (" + newLocation + ")");
 
         startAGeneratedFigure(newFigure);
-
     }
 
-    private void generateAtresure() {
+    private void generateTreasure() {
 
         if (board.getAmountOfActivTresures() >= MAX_TRESURES) return;
 
         int newLocation = board.getFreeCellsIndexList().get(random.nextInt(0, board.getFreeCellsIndexList().size()));
         board.addTresure(newLocation);
-        IO.println("TRESURE was added! (" + newLocation + ")");
+        IO.println("TREASURE was added! (" + newLocation + ")");
     }
 
     private void startAGeneratedFigure(Figure figure) {
-
         Thread figureThread = new Thread(figure);
         figureThread.start();
-
     }
 
     public synchronized static void transformSearchLightToShooter(Board board, SearchLight searchLight) {
@@ -83,7 +79,6 @@ public class Creator implements Runnable {
 
         Creator creator = new Creator(board);
         creator.startAGeneratedFigure(newFigure);
-
     }
 
     public synchronized static void spawnArrow(Board board, int location, int direction) {
@@ -94,6 +89,5 @@ public class Creator implements Runnable {
 
         Creator creator = new Creator(board);
         creator.startAGeneratedFigure(newFigure);
-
     }
 }
